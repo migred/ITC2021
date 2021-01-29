@@ -1,1 +1,1 @@
-# ITC2021
+# Course on analysis of microbiomes
