@@ -95,15 +95,15 @@ sum(out[,2])
 
 ## Learn the Error Rates
 
-The DADA2 algorithm makes use of a parametric error model (err) and every amplicon dataset has a different set of error rates. The learnErrors method learns this error model from the data, by alternating estimation of the error rates and inference of sample composition until they converge on a jointly consistent solution. As in many machine-learning problems, the algorithm must begin with an initial guess, for which the maximum possible error rates in this data are used (the error rates if only the most abundant sequence is correct and all the rest are errors).
+The DADA2 algorithm makes use of a parametric error model (err) and every amplicon dataset has a different set of error rates. The learnErrors method learns this error model from the data, by alternating estimation of the error rates and inference of sample composition until they converge on a jointly consistent solution. As in many machine-learning problems, the algorithm must begin with an initial guess, for which the maximum possible error rates in this data are used (the error rates if only the most abundant sequence is correct and all the rest are errors). By default learnErrors is using 1+e8 nucleotides to infer the model, but depending in the number of samples or computer memory this value can be modified. Nevertheless the lower the number, the less reliable the model will be.
 
 
 ```{r errForward, cache = TRUE}
-errF <- learnErrors(filtFs,multithread=TRUE)
+errF <- learnErrors(filtFs,multithread=TRUE, nbases=100000)
 ```
 
 ``` {r errReverse, cache = TRUE}
-errR <- learnErrors(filtRs, multithread=TRUE)
+errR <- learnErrors(filtRs, multithread=TRUE, nbases=100000)
 ```
 
 It is always worthwhile, as a sanity check if nothing else, to visualize the estimated error rates:
