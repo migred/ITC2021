@@ -24,7 +24,7 @@ library("ggplot2")
 First of all we must load the artifact files we have obtained in QIIME2 (metadata, table, taxonomy and tree)
 
 ```{r loaddata, message=FALSE}
-metadata<-read_tsv("metadata2")
+metadata<-read_tsv("metadata")
 SVs<-read_qza("table.qza")
 taxonomy<-read_qza("taxa/classification.qza")
 tree<-read_qza("rooted-tree.qza")
