@@ -46,7 +46,7 @@ physeq<-phyloseq(
   otu_table(SVs$data, taxa_are_rows = T),
   phy_tree(tree$data),
   tax_table(as.data.frame(taxtable) %>% select(-Confidence) %>% column_to_rownames("Feature.ID") %>% as.matrix()),
-  sample_data(metadata %>% as.data.frame() %>% column_to_rownames("#SampleID"))
+  sample_data(metadata %>% as.data.frame() %>% column_to_rownames("sampleid"))
   )
 ```
 
@@ -113,8 +113,8 @@ x = sort(x, TRUE)
 agrsojtab$Family = factor(as.character(agrsojtab$Family), levels=names(x))
 ggplot(agrsojtab, aes(y=log2FoldChange, x=Family, color=Phylum)) + geom_point(size=4) +
   theme(axis.text.x = element_text(angle=90, hjust = 0, vjust=0.5)) +
-  geom_hline(aes(yintercept=-1, linetype="dashed", colour = "red")) +
-  geom_hline(aes(yintercept=1, linetype="dashed", colour = "green"))
+  geom_hline(yintercept=-1, linetype="dashed", color = "red", size=1.5) +
+  geom_hline(yintercept=1, linetype="dashed", color = "green", size=1.5)
 
 ```
 
